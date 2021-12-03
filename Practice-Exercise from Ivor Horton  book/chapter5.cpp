@@ -33,9 +33,10 @@ void sum()
 
 void nonwhitespace()
 {
-    char text[100];
+    int temp1 = 100;
+    char text[temp1];
     std::cout << "Enter  a string less than 100 characters\n";
-    std::cin.getline(text, 100);
+    std::cin.getline(text, temp1);
     int i = 0, count{};
     char ch{};
     do
