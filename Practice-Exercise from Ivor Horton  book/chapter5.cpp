@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cctype>
 #include <vector>
+#include <iomanip>
 
 void oddsquare()
 {
@@ -101,6 +102,40 @@ void vectorprint()
     }
 }
 
+void bill()
+{
+    int product_id[50], quantity[50];
+    double total_cost, unit_price[50];
+    std::cout << "Enter the number of products you want to add(max is 50 products): \n";
+    int range{};
+    std::cin >> range;
+    for (int i = 0; i < range; i++)
+    {
+        std::cout << "enter the product id,quantity,unit price of product no. " << i + 1 << std::endl;
+        std::cin >> product_id[i] >> quantity[i] >> unit_price[i];
+    }
+    std::cout << "\nproduct no.\t product id \t quantity \t unit price \t total cost\n";
+    for (int i = 0; i < range; i++)
+    {
+        total_cost += quantity[i] * unit_price[i];
+        std::cout << i + 1 << "\t\t" << product_id[i] << "\t\t" << quantity[i] << "\t\t" << unit_price[i] << "\t\t" << quantity[i] * unit_price[i];
+        std::cout << std::endl;
+    }
+    std::cout << "\nthe total cost of all the products is: " << total_cost << std::endl;
+}
+
+void fibonacciseries()
+{
+    long arr[94]{0, 1};
+    std::cout << "The first 93 elements of fibonacci\n";
+    std::cout << arr[1] << std::endl;
+    for (int i = 2; i < 94; i++)
+    {
+        arr[i] = arr[i - 1] + arr[i - 2];
+        std::cout << arr[i] << "\t" << i << std::endl;
+    }
+}
+
 int main()
 {
     std::cout << "Enter Selection: \n ";
@@ -108,7 +143,9 @@ int main()
     std::cout << "2.sum of number: \n ";
     std::cout << "3.non-whitespace characters: \n ";
     std::cout << "4.5-4: \n ";
-    std::cout << "5.5-5: \n ";
+    std::cout << "5.5-6: \n ";
+    std::cout << "6.billing: \n ";
+    std::cout << "7.fibbonac series: \n ";
     int var;
     std::cin >> var;
     switch (var)
@@ -127,6 +164,12 @@ int main()
         break;
     case 5:
         vectorprint();
+        break;
+    case 6:
+        bill();
+        break;
+    case 7:
+        fibonacciseries();
         break;
 
     default:
