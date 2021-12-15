@@ -62,6 +62,9 @@ int main()
     case 1:
         studentdata();
         break;
+    case 2:
+        // studentdata();
+        break;
 
     default:
         std::cout << "Wrong input program terminated...\n";
