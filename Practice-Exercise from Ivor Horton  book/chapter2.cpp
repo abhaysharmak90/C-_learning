@@ -107,7 +107,7 @@ int main()
         circlearea();
         break;
     default:
-        std::cout << "Wrong choice program terminated...\n";
+        std::cout << "Wrong choice programm terminated...\n";
         break;
     }
 }
