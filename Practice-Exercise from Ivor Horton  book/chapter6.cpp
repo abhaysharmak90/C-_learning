@@ -23,6 +23,28 @@ void oddfunction()
     }
 }
 
+void oddfunctionwithptrinc()
+{
+    int *odd = new int[50];
+    std::cout << "The first 50 odd numbers are:\n";
+    for (int i = 0; i < 50; i++)
+    {
+        *odd = i * 2 + 1;
+        odd++;
+    }
+    for (int i = 0, temp{}; i < 50; i++)
+    {
+        odd--;
+        std::cout << *odd << "\t";
+        temp++;
+        if (temp == 10)
+        {
+            std::cout << std::endl;
+            temp = 0;
+        }
+    }
+}
+
 void randomshit()
 {
     std::cout << "Enter the size of the array:\n";
@@ -97,10 +119,11 @@ int main()
 {
     std::cout << "Enter your choice:\n";
     std::cout << "1.6-1:\n";
-    std::cout << "2.6-3:\n";
-    std::cout << "3.6-4:\n";
-    std::cout << "4.6-5:\n";
-    std::cout << "5.6-6:\n";
+    std::cout << "2.6-2:\n";
+    std::cout << "3.6-3:\n";
+    std::cout << "4.6-4:\n";
+    std::cout << "5.6-5:\n";
+    std::cout << "6.6-6:\n";
     int var;
     std::cin >> var;
     switch (var)
@@ -109,15 +132,18 @@ int main()
         oddfunction();
         break;
     case 2:
-        randomshit();
+        oddfunctionwithptrinc();
         break;
     case 3:
-        vectorshit();
+        randomshit();
         break;
     case 4:
-        newshit();
+        vectorshit();
         break;
     case 5:
+        newshit();
+        break;
+    case 6:
         againvectorshit();
         break;
 
