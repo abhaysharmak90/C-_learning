@@ -49,7 +49,7 @@ void vectorshit()
     double sum, temp1;
     for (size_t i = 0; i < n; i++)
     {
-        (*arr)[i] = 1.0 / ((1 + i) * (1 + i));
+        arr->at(i) = 1.0 / ((1.0 + i) * (1.0 + i));
     }
     for (double temp : *arr)
     {
