@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 
 void studentdata()
 {
@@ -12,12 +13,12 @@ void studentdata()
     std::cout << "Enter the number of data entries:\n";
     std::cin >> No_of_entries;
 
-    std::cin.ignore();
     for (size_t i = 0; i < No_of_entries; i++)
     {
         double grade;
         std::string name;
         std::cout << "Enter the name of the student no: " << i + 1 << "\n";
+        std::cin.ignore();
         std::getline(std::cin, name);
         std::cout << name << std::endl;
         if (name.size() == 0)
@@ -47,6 +48,35 @@ void studentdata()
               << average << std::endl;
 }
 
+void allwordcounter()
+{
+    std::string paragraph{};
+    std::cout << "Enter a string ended with '*'" << std::endl;
+    std::cin.ignore();
+    std::getline(std::cin, paragraph, '*');
+
+    std::string alphabets{"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+
+    std::vector<std::string> unqwrd{};
+    std::vector<int> wrdcount{};
+
+    int start_index{}, end_index{};
+    std::string word;
+    while (start_index < paragraph.length())
+    {
+        start_index = paragraph.find_first_of(alphabets, start_index);
+        end_index = paragraph.find_first_not_of(alphabets, start_index);
+        word = paragraph.substr(start_index, end_index - start_index);
+
+        unqwrd.push_back(word);
+        start_index += (end_index - start_index);
+    }
+    std::cout << unqwrd.size() << std::endl;
+    std::cout << unqwrd[0] << std::endl;
+    std::cout << unqwrd[1] << std::endl;
+    std::cout << unqwrd[2] << std::endl;
+}
+
 int main()
 {
     std::cout << "chose question:\n";
@@ -63,7 +93,7 @@ int main()
         studentdata();
         break;
     case 2:
-        // studentdata();
+        allwordcounter();
         break;
 
     default:
