@@ -67,14 +67,28 @@ void allwordcounter()
         start_index = paragraph.find_first_of(alphabets, start_index);
         end_index = paragraph.find_first_not_of(alphabets, start_index);
         word = paragraph.substr(start_index, end_index - start_index);
-
-        unqwrd.push_back(word);
         start_index += (end_index - start_index);
+        for (size_t i = 0; i < unqwrd.size(); i++)
+        {
+            if (unqwrd[i] == word)
+            {
+                wrdcount[i] += 1;
+                word.clear();
+                break;
+            }
+        }
+        if (word.empty())
+        {
+            continue;
+        }
+        unqwrd.push_back(word);
+        wrdcount.push_back(1);
+    }
+    for (size_t i = 0; i < unqwrd.size(); i++)
+    {
+        std::cout << unqwrd[i] << " " << wrdcount[i] << std::endl;
     }
     std::cout << unqwrd.size() << std::endl;
-    std::cout << unqwrd[0] << std::endl;
-    std::cout << unqwrd[1] << std::endl;
-    std::cout << unqwrd[2] << std::endl;
 }
 
 int main()
