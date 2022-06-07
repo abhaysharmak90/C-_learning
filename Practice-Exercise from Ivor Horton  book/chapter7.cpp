@@ -105,7 +105,7 @@ void wordreplacer()
     std::cout << "\nEnter a string ending with '*'\n\n";
     std::cin.ignore();
     std::getline(std::cin, para, '*');
-
+    para += " ";
     std::cout << "\nEnter the word that needs to be replaced\n\n";
     std::string word;
     std::cin.ignore();
@@ -114,28 +114,22 @@ void wordreplacer()
     for (int strtindx = 0; strtindx < para.length(); strtindx++)
     {
         auto rplcindx = para.find(word, strtindx);
-
         for (auto j : sprtr)
         {
-            // std::cout << j << "\n\n";
             if (para[rplcindx - 1] == j || para[0] == word[0])
             {
                 for (auto k : sprtr)
                 {
-                    bool check = (para.find(para[rplcindx + word.length()]) == std::string::npos);
-                    if (para[rplcindx + word.length()] == k || check)
+                    if (para[rplcindx + word.length()] == k)
                     {
                         para.replace(rplcindx, word.length(), word.length(), '*');
                     }
                 }
             }
         }
-        // strtindx = rplcindx;
-        // std::cout << strtindx << "\t" << rplcindx << "\t" << para.length();
-        // std::cout << para[strtindx] << std::endl;
     }
     std::cout << "\n"
-              << para << "\n\n";
+              << para << "\n";
 }
 
 int main()
