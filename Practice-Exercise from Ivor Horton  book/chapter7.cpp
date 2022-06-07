@@ -51,7 +51,8 @@ void studentdata()
 void allwordcounter()
 {
     std::string paragraph{};
-    std::cout << "Enter a string ended with '*'" << std::endl;
+    std::cout << "\nEnter a string ended with '*'\n"
+              << std::endl;
     std::cin.ignore();
     std::getline(std::cin, paragraph, '*');
 
@@ -84,21 +85,28 @@ void allwordcounter()
         unqwrd.push_back(word);
         wrdcount.push_back(1);
     }
-    for (size_t i = 0; i < unqwrd.size(); i++)
+    std::cout << std::endl;
+    for (size_t i = 0, j = 0; i < unqwrd.size(); i++)
     {
-        std::cout << unqwrd[i] << " " << wrdcount[i] << std::endl;
+        std::cout << unqwrd[i] << "\t" << wrdcount[i] << "\t\t";
+        ++j;
+        if (j == 3)
+        {
+            std::cout << "\n\n";
+            j = 0;
+        }
     }
-    std::cout << unqwrd.size() << std::endl;
+    std::cout << "\n\n";
 }
 
 int main()
 {
-    std::cout << "chose question:\n";
+    std::cout << "\nchose question:\n";
     std::cout << "1.7-1\n";
     std::cout << "2.7-2\n";
     std::cout << "3.7-3\n";
     std::cout << "4.7-4\n";
-    std::cout << "5.7-5\n";
+    std::cout << "5.7-5\n\n";
     int var;
     std::cin >> var;
     switch (var)
