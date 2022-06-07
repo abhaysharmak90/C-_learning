@@ -99,6 +99,45 @@ void allwordcounter()
     std::cout << "\n\n";
 }
 
+void wordreplacer()
+{
+    std::string para;
+    std::cout << "\nEnter a string ending with '*'\n\n";
+    std::cin.ignore();
+    std::getline(std::cin, para, '*');
+
+    std::cout << "\nEnter the word that needs to be replaced\n\n";
+    std::string word;
+    std::cin.ignore();
+    std::getline(std::cin, word);
+    std::string sprtr{" ,./<>?;'\\:\"|[]{}!@#$%^&*()_+~`"};
+    for (int strtindx = 0; strtindx < para.length(); strtindx++)
+    {
+        auto rplcindx = para.find(word, strtindx);
+
+        for (auto j : sprtr)
+        {
+            // std::cout << j << "\n\n";
+            if (para[rplcindx - 1] == j || para[0] == word[0])
+            {
+                for (auto k : sprtr)
+                {
+                    bool check = (para.find(para[rplcindx + word.length()]) == std::string::npos);
+                    if (para[rplcindx + word.length()] == k || check)
+                    {
+                        para.replace(rplcindx, word.length(), word.length(), '*');
+                    }
+                }
+            }
+        }
+        // strtindx = rplcindx;
+        // std::cout << strtindx << "\t" << rplcindx << "\t" << para.length();
+        // std::cout << para[strtindx] << std::endl;
+    }
+    std::cout << "\n"
+              << para << "\n\n";
+}
+
 int main()
 {
     std::cout << "\nchose question:\n";
@@ -116,6 +155,9 @@ int main()
         break;
     case 2:
         allwordcounter();
+        break;
+    case 3:
+        wordreplacer();
         break;
 
     default:
