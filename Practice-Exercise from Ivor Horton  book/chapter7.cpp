@@ -135,78 +135,93 @@ void wordreplacer()
 void anagramcheck()
 {
     std::string word1, word2;
-    std::cout << "\nEnter Ist word\n";
+    std::cout << "\nEnter Ist word,end with '*'\n";
     std::cin.ignore();
-    std::getline(std::cin, word1);
-    std::cout << "\nEnter 2nd word\n";
-    // std::cin.ignore();
-    std::getline(std::cin, word2);
+    std::getline(std::cin, word1, '*');
+    std::cout << "\nEnter 2nd word,end with '*'\n";
+    std::cin.ignore();
+    std::getline(std::cin, word2, '*');
     std::vector<char> letters1, letters2;
     std::vector<int> lettercnt1, lettercnt2;
-    // std::cout << word1.length() << " " << word2.length() << "\n";
-    if (word1.length() != word2.length())
+    std::cout << word1.length() << word1 << " " << word2.length() << word2 << "\n";
+    for (int i{}; i < word1.length(); i++)
     {
-        std::cout << "\nThe words are not an anagram\n";
-        exit(0);
+        bool brk{false};
+        for (size_t j = 0; j < letters1.size(); j++)
+        {
+            if (letters1.size() > 0 && letters1[j] == word1[i])
+            {
+                lettercnt1[j] += 1;
+                brk = true;
+                break;
+            }
+        }
+        if (brk)
+        {
+            continue;
+        }
+        else
+        {
+            letters1.push_back(word1[i]);
+            lettercnt1.push_back(1);
+        }
+    }
+    for (int i{}; i < word2.length(); i++)
+    {
+        bool brk{false};
+        for (size_t j = 0; j < letters2.size(); j++)
+        {
+            if (letters2.size() > 0 && letters2[j] == word2[i])
+            {
+                lettercnt2[j] += 1;
+                brk = true;
+                break;
+            }
+        }
+        if (brk)
+        {
+            continue;
+        }
+        else
+        {
+            letters2.push_back(word2[i]);
+            lettercnt2.push_back(1);
+        }
+    }
+    int truecount{};
+    for (size_t i = 0; i < letters1.size(); i++)
+    {
+        for (size_t j = 0; j < letters2.size(); j++)
+        {
+            if (letters1[i] == letters2[j])
+            {
+                if (lettercnt1[i] == lettercnt2[j])
+                {
+                    truecount++;
+                }
+                else if (letters1[i] == ' ' && letters2[j] == ' ')
+                {
+                    truecount++;
+                }
+            }
+        }
+    }
+    if (truecount == letters1.size())
+    {
+        std::cout << "\nThe entered words are an anagram of each other\n";
     }
     else
     {
-        for (int i{}; i < word1.length(); i++)
-        {
-            bool brk{false};
-            for (size_t j = 0; j < letters1.size(); j++)
-            {
-                if (letters1.size() > 0 && letters1[j] == word1[i])
-                {
-                    lettercnt1[j] += 1;
-                    brk = true;
-                    break;
-                }
-            }
-            if (brk)
-            {
-                continue;
-            }
-            else
-            {
-                letters1.push_back(word1[i]);
-                lettercnt1.push_back(1);
-            }
-        }
-        for (int i{}; i < word2.length(); i++)
-        {
-            bool brk{false};
-            for (size_t j = 0; j < letters2.size(); j++)
-            {
-                if (letters2.size() > 0 && letters2[j] == word2[i])
-                {
-                    lettercnt2[j] += 1;
-                    brk = true;
-                    break;
-                }
-            }
-            if (brk)
-            {
-                continue;
-            }
-            else
-            {
-                letters2.push_back(word2[i]);
-                lettercnt2.push_back(1);
-            }
-        }
-        for (size_t i = 0; i < lettercnt1.size(); i++)
-        {
-            std::cout << "\n"
-                      << letters1[i] << "\t" << lettercnt1[i] << "\n";
-        }
-        for (size_t i = 0; i < lettercnt2.size(); i++)
-        {
-            std::cout << "\n"
-                      << letters2[i] << "\t" << lettercnt2[i] << "\n";
-        }
+        std::cout << "\nthis isn not an anagram\n";
     }
+    // for (size_t i = 0; i < letters1.size(); i++)
+    // {
+    //     std::cout << letters1[i] << "\t" << lettercnt1[i] << "\n";
+    // }
 }
+
+void newstuff() {}
+
 int main()
 {
     std::cout << "\nchose question:\n";
@@ -230,6 +245,9 @@ int main()
         break;
     case 4:
         anagramcheck();
+        break;
+    case 5:
+        newstuff();
         break;
 
     default:
