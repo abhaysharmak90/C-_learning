@@ -220,7 +220,53 @@ void anagramcheck()
     // }
 }
 
-void newstuff() {}
+void wrdextract()
+{
+    std::string text;
+    std::cout << "\nEnter a text ending with '*'\n";
+    std::cin.ignore();
+    std::getline(std::cin, text, '*');
+    std::string word;
+    std::cout << "\nenter the word for search\n";
+    std::cin.ignore();
+    std::getline(std::cin, word);
+    std::string seprators{"<>?,./;':|\"\[]{}!@#$%^&*()_+-= "};
+    auto indexs{0};
+    auto indexe{std::string::npos};
+    for (size_t i = 0; i < text.length(); i++)
+    {
+        indexs = text.find_first_of(word, indexs);
+        indexe = text.find_first_of(seprators, indexs);
+        // std::cout << indexs << " " << indexe;
+        if (indexs >= 0)
+        {
+            // std::cout << "\n123";
+            for (size_t i = 0; i < seprators.length(); i++)
+            {
+                std::string printword;
+                // std::cout << "\n1234";
+                if ((text[indexs - 1] == seprators[i] || indexs == 0) && (indexe != std::string::npos))
+                {
+                    // std::cout << "\n12345";
+                    printword = text.substr(indexs, indexe - indexs);
+                    std::cout << printword << "\n";
+                    // std::cout << indexe << "\n";
+                    indexs = indexe;
+                }
+                else if (text[indexs - 1] == seprators[i] && indexe == std::string::npos)
+                {
+                    // std::cout << "\n123456";
+                    printword = text.substr(indexs, text.length() - indexs);
+                    std::cout << printword << "\n";
+                    // std::cout << indexe << "\n";
+                    indexs = indexe;
+                }
+            }
+        }
+        indexs = indexe;
+        // std::cout << indexs << " " << indexe;
+    }
+}
 
 int main()
 {
@@ -229,7 +275,8 @@ int main()
     std::cout << "2.7-2\n";
     std::cout << "3.7-3\n";
     std::cout << "4.7-4\n";
-    std::cout << "5.7-5\n\n";
+    std::cout << "5.7-5\n";
+    std::cout << "6.7-6\n\n";
     int var;
     std::cin >> var;
     switch (var)
@@ -247,7 +294,10 @@ int main()
         anagramcheck();
         break;
     case 5:
-        newstuff();
+        anagramcheck();
+        break;
+    case 6:
+        wrdextract();
         break;
 
     default:
