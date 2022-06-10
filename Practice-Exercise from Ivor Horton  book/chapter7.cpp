@@ -268,6 +268,48 @@ void wrdextract()
     }
 }
 
+void strtoint()
+{
+    std::string numstr;
+    std::cout << "\nEnter a string of numbers seprated by ' ' and ended with '#' and a single number should be 10 digits long only\n\n";
+    std::cin.ignore();
+    std::getline(std::cin, numstr, '#');
+    // std::cout << numstr << " " << numstr.length() << "\n";
+    std::string seprator{" "};
+    std::vector<std::string> numwords;
+    std::vector<int> numbers;
+    // in num;
+    for (size_t i = 0; i < numstr.length();)
+    {
+        auto indexs = numstr.find_first_not_of(seprator, i);
+        auto indexe = numstr.find_first_of(seprator, indexs);
+        // std::cout << indexs << "  " << indexe << " " << i << "\n";
+        if (indexe == std::string::npos)
+        {
+            indexe = numstr.length();
+            numwords.push_back(numstr.substr(indexs, indexe - indexs));
+            break;
+        }
+        auto numlength = indexe - indexs;
+        numwords.push_back(numstr.substr(indexs, numlength));
+        i = indexe;
+    }
+    for (size_t i = 0; i < numwords.size(); i++)
+    {
+        numbers.push_back(std::stoi(numwords[i]));
+    }
+    for (size_t i = 0; i < numbers.size(); i++)
+    {
+        std::cout << "\n"
+                  << numbers.at(i) << "\n";
+    }
+    std::cout << "\n";
+}
+
+void tatargram()
+{
+}
+
 int main()
 {
     std::cout << "\nchose question:\n";
@@ -276,7 +318,8 @@ int main()
     std::cout << "3.7-3\n";
     std::cout << "4.7-4\n";
     std::cout << "5.7-5\n";
-    std::cout << "6.7-6\n\n";
+    std::cout << "6.7-6\n";
+    std::cout << "7.7-7\n\n";
     int var;
     std::cin >> var;
     switch (var)
@@ -298,6 +341,12 @@ int main()
         break;
     case 6:
         wrdextract();
+        break;
+    case 7:
+        strtoint();
+        break;
+    case 8:
+        tatargram();
         break;
 
     default:
