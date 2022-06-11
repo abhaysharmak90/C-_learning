@@ -309,17 +309,17 @@ void strtoint()
 void tatargram()
 {
     std::string tatargram;
-    std::cout << "\nEnter a possible tatargram ending with '*'\n";
+    std::cout << "\nEnter a possible tatargram ending with '*'\n\n";
     std::cin.ignore();
     std::getline(std::cin, tatargram, '*');
     std::string seprators{" <>?,./;':|\\\"{}[]!@#$%^&*()_+-=/*\n"};
     char ch;
-    int i{0};
-    for (auto h : tatargram)
-    {
-        std::cout << h << " " << i << "\n";
-        i++;
-    }
+    // int i{0};
+    // for (auto h : tatargram)
+    // {
+    //     std::cout << h << " " << i << "\n";
+    //     i++;
+    // }
     for (auto ch1 : tatargram)
     {
         if (std::isalpha(ch1))
@@ -328,6 +328,7 @@ void tatargram()
             break;
         }
     }
+    // std::cout << tatargram.length() << "\n";
     for (size_t i = 0; i < tatargram.length();)
     {
         auto indexs = tatargram.find_first_not_of(seprators, i);
@@ -336,11 +337,11 @@ void tatargram()
         {
             indexe = tatargram.length();
         }
-        else if (indexs == std::string::npos)
+        if (indexs == std::string::npos)
             break;
         if (std::tolower(tatargram[indexs]) != std::tolower(ch))
         {
-            std::cout << indexs << "\t" << indexe << "\t" << i << "\t" << ch << " " << tatargram[indexs] << " " << static_cast<char>(std::tolower(tatargram[indexs])) << "\n";
+            // std::cout << indexs << "\t" << indexe << "\t" << i << "\t" << ch << " " << tatargram[indexs] << " " << static_cast<char>(std::tolower(tatargram[indexs])) << "\n";
             std::cout << "\nthis string is not a tatargram\n";
             exit(0);
         }
@@ -348,6 +349,8 @@ void tatargram()
     }
     std::cout << "\nthis string is a tatargram\n";
 }
+
+void newshit() {}
 
 int main()
 {
@@ -359,7 +362,8 @@ int main()
     std::cout << "5.7-5\n";
     std::cout << "6.7-6\n";
     std::cout << "7.7-7\n";
-    std::cout << "8.7-8\n\n";
+    std::cout << "8.7-8\n";
+    std::cout << "9.7-9\n\n";
     int var;
     std::cin >> var;
     switch (var)
@@ -387,6 +391,9 @@ int main()
         break;
     case 8:
         tatargram();
+        break;
+    case 9:
+        newshit();
         break;
 
     default:
