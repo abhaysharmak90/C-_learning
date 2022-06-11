@@ -350,7 +350,53 @@ void tatargram()
     std::cout << "\nthis string is a tatargram\n";
 }
 
-void newshit() {}
+void tatargramshit()
+{
+    std::string tatargram;
+    std::cout << "\nEnter a possible tatargram ending with '*'\n\n";
+    std::cin.ignore();
+    std::getline(std::cin, tatargram, '*');
+    // std::cout << tatargram << std::endl;
+    char ch;
+    std::string seprators{" ,./<>?;'\\:\"|[]{}!@#$%^&*()_+-=/*\n"};
+    for (auto ch1 : tatargram)
+    {
+        if (std::isalpha(ch1))
+        {
+            ch = ch1;
+            break;
+        }
+    }
+    for (size_t i = 0; i < tatargram.length();)
+    {
+        // std::cout << i << "\n";
+        auto indexs = tatargram.find_first_not_of(seprators, i);
+        auto indexe = tatargram.find_first_of(seprators, indexs);
+        // std::cout << indexs << " " << indexe << "\n";
+        if (indexs == std::string::npos)
+        {
+            break;
+        }
+        if (indexe == std::string::npos)
+        {
+            indexe = tatargram.length();
+        }
+        if (std::tolower(tatargram[indexs]) != std::tolower(ch))
+        {
+            // std::cout << tatargram << std::endl;
+            // std::cout << indexs << " " << indexe << " " << ch << " " << i << " " << tatargram[indexs] << std::endl;
+            std::cout << "\nThe entered string is not a tatargram\n";
+            exit(0);
+        }
+        else
+        {
+            tatargram.erase(indexs, 1);
+        }
+        i = indexe;
+    }
+    std::cout << "\nThe entered string is a tatargram and after removing all " << ch << "'s from the string\nthe string becomes\n\n";
+    std::cout << tatargram << std::endl;
+}
 
 int main()
 {
@@ -393,7 +439,7 @@ int main()
         tatargram();
         break;
     case 9:
-        newshit();
+        tatargramshit();
         break;
 
     default:
