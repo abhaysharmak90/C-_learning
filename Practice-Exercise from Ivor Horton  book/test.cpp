@@ -1,8 +1,16 @@
 #include <iostream>
 #include <string>
 
+// void doubleit(const double &c) { std::cout << c * 2; }
+// void doubleitprint(const double &d) { std::cout << d << "\n"; }
 int main()
 {
+    // double a{5};
+    // doubleit(a);
+    // doubleitprint(a);
+    // int ac{55};
+    // doubleit(ac);
+    // doubleitprint(ac);
     // std::string name{"abhay is is this sharma"};
     // std::string word{"is"};
     // for (size_t i = 0; i < name.length(); i++)
