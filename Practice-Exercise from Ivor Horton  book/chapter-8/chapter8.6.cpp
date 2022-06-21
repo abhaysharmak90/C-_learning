@@ -2,12 +2,14 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <cmath>
 
 void vector_sort(std::vector<unsigned int> &);
 void output_Highest_five(std::vector<unsigned int> &);
 void output_Lowest_five(std::vector<unsigned int> &);
 double output_mean(std::vector<unsigned int> &);
 double get_median(std::vector<unsigned int> &);
+double get_variance(std::vector<unsigned int> &, double);
 
 int main()
 {
@@ -49,6 +51,13 @@ int main()
     double median = get_median(grades);
     std::cout << "\nThe Median of grades is:-\n"
               << median << "\n";
+
+    double variance = get_variance(grades, mean);
+    std::cout << "\nThe variance of grades is:-\n"
+              << variance << "\n";
+
+    std::cout << "\nThe standard deviation of grades is:-\n"
+              << std::sqrt(variance) << "\n";
 }
 
 void vector_sort(std::vector<unsigned int> &vec)
@@ -119,5 +128,13 @@ double get_median(std::vector<unsigned int> &vecta_mid)
     }
 }
 
-
-
+double get_variance(std::vector<unsigned int> &vecta, double mean)
+{
+    double s_d_sum{};
+    double vec_size{static_cast<double>(vecta.size())};
+    for (auto itm : vecta)
+    {
+        s_d_sum += std::pow((itm - mean), 2);
+    }
+    return s_d_sum / vec_size;
+}
