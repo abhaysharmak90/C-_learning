@@ -5,6 +5,14 @@
 // void doubleitprint(const double &d) { std::cout << d << "\n"; }
 int main()
 {
+    // double a{7};
+    // double b{2};
+    // double c{a / b};
+    // int d{7};
+    // int e{2};
+    // double f{/*static_cast<double>(*/d / static_cast<double>(e)};
+    // std::cout << "\n"
+    //           << c << " " << f << "\n";
     // double a{5};
     // doubleit(a);
     // doubleitprint(a);
