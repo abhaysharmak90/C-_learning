@@ -5,6 +5,7 @@
 // void doubleitprint(const double &d) { std::cout << d << "\n"; }
 int main()
 {
+    std::cout<<__cplusplus<<std::endl;
     // double a{7};
     // double b{2};
     // double c{a / b};
