@@ -21,9 +21,32 @@ void create_vecter_elements(std::vector<t> &vec)
 template <typename t>
 void output_vector_elements(std::vector<t> &vec)
 {
+    std::cout << std::endl;
     for (size_t i = 0; i < vec.size(); i++)
     {
         std::cout << vec[i] << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+template <typename t>
+void vector_sort(std::vector<t> &vec)
+{
+    for (size_t i = 0; i < vec.size(); i++)
+    {
+        t smallest = vec[i];
+        // std::cout << vec.size() << " " << smallest << " " << vec[i] << std::endl;
+        for (size_t j = i + 1; j < vec.size(); j++)
+        {
+            if (vec[j] < smallest)
+            {
+                // std::cout << vec.size() << " " << smallest << " " << vec[i] << " " << vec[j] << std::endl;
+                smallest = vec[j];
+                vec[j] = vec[i];
+                vec[i] = smallest;
+            }
+            // std::cout << vec.size() << " " << smallest << " " << vec[i] << " " << vec[j] << std::endl;
+        }
     }
 }
 
@@ -40,15 +63,22 @@ int main()
     case 1:
         create_vecter_elements(m_i_vector);
         output_vector_elements(m_i_vector);
+        vector_sort(m_i_vector);
+        output_vector_elements(m_i_vector);
 
         break;
     case 2:
         create_vecter_elements(m_d_vector);
         output_vector_elements(m_d_vector);
 
+        vector_sort(m_d_vector);
+        output_vector_elements(m_d_vector);
+
         break;
     case 3:
         create_vecter_elements(m_s_vector);
+        output_vector_elements(m_s_vector);
+        vector_sort(m_s_vector);
         output_vector_elements(m_s_vector);
 
         break;
