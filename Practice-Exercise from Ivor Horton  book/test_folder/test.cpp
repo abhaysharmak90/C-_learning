@@ -1,7 +1,7 @@
 #include <iostream>
 // #include <string>
 
-#include "test_folder/abhay.h"
+#include "abhay.h"
 
 void foo1(int);
 
