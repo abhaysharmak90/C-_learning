@@ -5,9 +5,9 @@
 
 namespace words
 {
-    void enter_string(std::shared_ptr<std::string>);
+    void enter_string(std::shared_ptr<std::string> str1);
 
-    void show_string(std::shared_ptr<std::string>);
-
+    void show_string(std::shared_ptr<std::string> str2);
 }
+
 #endif
