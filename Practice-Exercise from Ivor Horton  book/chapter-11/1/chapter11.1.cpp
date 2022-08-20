@@ -9,4 +9,5 @@ int main()
     std::shared_ptr<std::string> full_string{std::make_shared<std::string>("")};
     words::enter_string(full_string);
     words::show_string(full_string);
+    words::create_vector(full_string);
 }

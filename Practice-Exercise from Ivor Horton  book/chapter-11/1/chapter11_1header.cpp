@@ -1,4 +1,5 @@
 #include <iostream>
+#include<vectors>
 
 #include "chapter11_1header.h"
 
@@ -13,4 +14,9 @@ void words::show_string(std::shared_ptr<std::string> str2)
 {
     std::cout << "\n"
               << *str2 << std::endl;
+}
+
+void words::create_vector(std::shared_ptr<std::string> str3)
+{
+    const std::vector<std::string> seprators{};
 }
