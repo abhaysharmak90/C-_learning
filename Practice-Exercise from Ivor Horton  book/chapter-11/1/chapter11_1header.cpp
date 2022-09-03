@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+// #include <vector>
 
 #include "chapter11_1header.h"
 
@@ -16,12 +16,12 @@ void words::show_string(std::shared_ptr<std::string> str2)
               << *str2 << std::endl;
 }
 
-void words::create_vector(std::shared_ptr<std::string> str3)
+void words::create_vector(std::shared_ptr<std::string> str3, std::shared_ptr<std::vector<std::string>> sep_words1)
 {
     const std::string SEPRATORS{" ,./<>?;'\n\\[]{}-=_+!@#$%^&*()\t"};
 
     std::string word{""};
-    std::vector<std::string> words;
+    // std::vector<std::string> words;
     size_t start_index{}, end_index{}, word_length{};
 
     start_index = (*str3).find_first_not_of(SEPRATORS);
@@ -40,15 +40,21 @@ void words::create_vector(std::shared_ptr<std::string> str3)
         word = (*str3).substr(start_index, word_length);
         // std::cout << std::endl
         //           << word << std::endl;
-        words.push_back(word);
+        (*sep_words1).push_back(word);
         start_index = (*str3).find_first_not_of(SEPRATORS, end_index);
         // std::cout << "\n"
         //           << start_index << " " << end_index << " " << word_length << "\n";
         // exit(0);
     }
-    for (auto ch : words)
+}
+
+void words::show_vector(std::shared_ptr<std::vector<std::string>> sep_words2)
+{
+    for (auto ch : (*sep_words2))
     {
         std::cout << "\n"
                   << ch << "\n";
     }
 }
+
+// endoffile
