@@ -1,19 +1,19 @@
+#include "words.h"
+
 #include <iostream>
 // #include <vector>
 
-#include "chapter11_1header.h"
-
 void words::enter_string(std::shared_ptr<std::string> str1)
 {
-    std::cout << "\n Enter a string ended with '*'\n";
+    std::cout << "Enter a string ended with '*' :\n";
     getline(std::cin, *str1, '*');
     std::cout << std::endl;
 }
 
 void words::show_string(std::shared_ptr<std::string> str2)
 {
-    std::cout << "\n"
-              << *str2 << std::endl;
+    // std::cout << "\n";
+    std::cout << *str2 << std::endl;
 }
 
 void words::create_vector(std::shared_ptr<std::string> str3, std::shared_ptr<std::vector<std::string>> sep_words1)
@@ -48,12 +48,40 @@ void words::create_vector(std::shared_ptr<std::string> str3, std::shared_ptr<std
     }
 }
 
+void words::sort_vector(std::shared_ptr<std::vector<std::string>> sep_words3)
+{
+    for (size_t i = 0; i < sep_words3->size(); i++)
+    {
+        auto smallest_word = sep_words3->at(i);
+        for (size_t j = i + 1; j < sep_words3->size(); j++)
+        {
+
+            if (sep_words3->at(j) < smallest_word)
+            {
+                // std::cout << i << " " << j << " " << smallest_word << " " << sep_words3->at(i) << " " << sep_words3->at(j) << std::endl;
+                smallest_word = sep_words3->at(j);
+                sep_words3->at(j) = sep_words3->at(i);
+                sep_words3->at(i) = smallest_word;
+                // std::cout << i << " " << j << " " << smallest_word << " " << sep_words3->at(i) << " " << sep_words3->at(j) << std::endl;
+            }
+        }
+    }
+}
+
 void words::show_vector(std::shared_ptr<std::vector<std::string>> sep_words2)
 {
+    std::cout << "\n";
+    size_t CPL{0};
     for (auto ch : (*sep_words2))
     {
-        std::cout << "\n"
-                  << ch << "\n";
+        ++CPL;
+        std::cout << ch << "\t";
+        if (CPL == 4)
+        {
+            std::cout << "\n"
+                      << std::endl;
+            CPL = 0;
+        }
     }
 }
 

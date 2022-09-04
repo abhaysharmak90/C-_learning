@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
-// #include <vector>
 #include <memory>
+// #include <vector>
 
-#include "chapter11_1header.h"
+#include "words.h"
 
 int main()
 {
@@ -18,5 +18,9 @@ int main()
     words::enter_string(full_string);
     words::show_string(full_string);
     words::create_vector(full_string, sep_words);
+    // std::cout << sep_words->size() << std::endl;
+    words::show_vector(sep_words);
+    words::sort_vector(sep_words);
+    // std::cout << sep_words->size() << std::endl;
     words::show_vector(sep_words);
 }
