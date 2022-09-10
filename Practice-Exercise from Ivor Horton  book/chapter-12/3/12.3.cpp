@@ -1,18 +1,16 @@
 #include <iostream>
 
-void calculate(INTEGER &, INTEGER &, INTEGER &, INTEGER &, INTEGER &, INTEGER &);
-
 class INTEGER
 {
     int number;
 
 public:
-    void getter() const { std::cout << number << "\n"; }
+    int getter() const { return number; }
     void setter(int num) { number = num; }
     // void compare(INTEGER) const;
-    void add(INTEGER &num) const;
-    void sub(INTEGER &num) const;
-    void multiply(INTEGER &num) const;
+    INTEGER &add(const INTEGER &num);
+    INTEGER &sub(const INTEGER &num);
+    INTEGER &multiply(const INTEGER &num);
 
     INTEGER() = default; // 2 ways are either don't put a constructer or add a default keyword at the end
     INTEGER(int num) : number{num}
@@ -26,10 +24,13 @@ public:
     // }
 };
 
+int calculate(INTEGER &num4, INTEGER &num5, INTEGER &num6, INTEGER &num7, INTEGER &num8);
+
 int main()
 {
     INTEGER numb4{4}, numb5{5}, numb6{6}, numb7{7}, numb8{8};
     std::cout << "answer to equation is:\n";
+    std::cout << calculate(numb4, numb5, numb6, numb7, numb8) << std::endl;
     // int temp_num;
     // std::cout << "enter a number:\n";
     // std::cin >> temp_num;
@@ -48,19 +49,26 @@ int main()
     // numb1.multiply(5);
 }
 
-void INTEGER::add(INTEGER &num) const
+INTEGER &INTEGER::add(const INTEGER &num)
 {
-    number + num.number;
+    number += num.number;
+    return *this;
 }
-void INTEGER::sub(INTEGER &num) const
+INTEGER &INTEGER::sub(const INTEGER &num)
 {
-    number - num.number;
+    number -= num.number;
+    return *this;
 }
-void INTEGER::multiply(INTEGER &num) const
+INTEGER &INTEGER::multiply(const INTEGER &num)
 {
-    number *num.number;
+    number *= num.number;
+    return *this;
 }
 
-void calculate(INTEGER &num4, INTEGER &num5, INTEGER &num6, INTEGER &num7, INTEGER &num8)
+int calculate(INTEGER &num4, INTEGER &num5, INTEGER &num6, INTEGER &num7, INTEGER &num8)
 {
+    INTEGER result{0};
+    // std::cout << result.getter();
+    result.add(num4).multiply(num5).add(num6).multiply(num5).add(num7).multiply(num5).add(num8);
+    return result.getter();
 }
