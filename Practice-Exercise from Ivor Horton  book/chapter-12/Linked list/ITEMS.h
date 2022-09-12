@@ -1,18 +1,18 @@
-#ifndef BOX
-#define BOX
+#ifndef ITEMS
+#define ITEMS
 
 #include <iostream>
 #include <string>
 
-class box
+class items
 {
 private:
     std::string B_item_name;
     double B_item_price;
 
 public:
-    void display_BOX() const;
-    void fill_BOX(/*std::string&,double*/);
+    void display_item() const;
+    void fill_item(/*std::string&,double*/);
 };
 
 #endif

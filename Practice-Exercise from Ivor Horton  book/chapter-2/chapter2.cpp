@@ -58,7 +58,7 @@ void inchestofeet_inches()
     std::cout << "The mesurements after conversion are: " << no_of_feets << " Feets " << no_of_inches << " Inches\n";
 }
 
-void boxesonshelf()
+void BOXonshelf()
 {
     const int inches_per_foot = 12;
 
@@ -71,16 +71,16 @@ void boxesonshelf()
     std::cout << "Enter box side size: ";
     std::cin >> box_side;
 
-    long no_of_boxes{};
-    no_of_boxes = static_cast<long>(((inches_per_foot * shelf_length) / box_side) * ((inches_per_foot * shelf_depth) / box_side));
-    std::cout << "\nthe no of boxes that can fit on shelf are: " << no_of_boxes << "\n";
+    long no_of_BOX{};
+    no_of_BOX = static_cast<long>(((inches_per_foot * shelf_length) / box_side) * ((inches_per_foot * shelf_depth) / box_side));
+    std::cout << "\nthe no of BOX that can fit on shelf are: " << no_of_BOX << "\n";
 }
 
 int main()
 {
     std::cout << "Enter your choice(1-5)\n"
               << std::endl;
-    std::cout << "1.No of Boxes on Shelf" << std::endl;
+    std::cout << "1.No of BOX on Shelf" << std::endl;
     std::cout << "2.Calculate Your BMI" << std::endl;
     std::cout << "3.Inches to Feet-Inches" << std::endl;
     std::cout << "4.Height of a Tree" << std::endl;
@@ -92,7 +92,7 @@ int main()
     switch (ch)
     {
     case 1:
-        boxesonshelf();
+        BOXonshelf();
         break;
     case 2:
         BMI();

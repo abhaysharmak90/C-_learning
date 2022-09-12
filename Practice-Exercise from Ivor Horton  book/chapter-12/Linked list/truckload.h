@@ -1,17 +1,20 @@
 #ifndef TRUCK_L
 #define TRUCK_L
 
-#include "box.h"
+#include "ITEMS.h"
 
 class truckload
 {
 private:
-    int T_load_no, T_size;
-
-    class BOXES;
+    class BOX;
+    size_t T_size;
+    BOX *current;
+    BOX *first;
+    BOX *last;
 
 public:
-    void display_T_load() const;
+    size_t T_load_no;
+    void display_T_load();
     void create_T_load();
 };
 
