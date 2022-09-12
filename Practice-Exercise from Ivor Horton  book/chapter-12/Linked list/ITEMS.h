@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 class items
 {
@@ -13,6 +14,8 @@ private:
 public:
     void display_item() const;
     void fill_item(/*std::string&,double*/);
+
+    std::string get_name();
 };
 
 #endif

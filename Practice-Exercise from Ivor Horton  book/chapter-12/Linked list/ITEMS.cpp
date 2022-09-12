@@ -14,3 +14,8 @@ void items::fill_item()
     std::cout << "Enter the price of the item in the box:\n";
     std::cin >> B_item_price;
 }
+
+std::string items::get_name()
+{
+    return B_item_name;
+}
