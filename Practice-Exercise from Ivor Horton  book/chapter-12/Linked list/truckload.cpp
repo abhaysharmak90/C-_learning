@@ -62,7 +62,7 @@ truckload::BOX *truckload::BOX::get_prev_BOX()
 
 void truckload::create_T_load()
 {
-    std::cout << "Enter Truckload no:";
+    std::cout << "\nEnter Truckload no:";
     std::cin >> T_load_no;
     // size_t no_of_boxes{};
     std::cout << "how many boxes do u want:\n";
@@ -93,13 +93,13 @@ void truckload::display_T_load()
 {
     // first->view_box();
     size_t D_choice;
-    std::cout << "1.Forward.\n"
+    std::cout << "\n1.Forward.\n"
               << "2.Reverse.\n";
     std::cin >> D_choice;
     switch (D_choice)
     {
     case 1:
-        std::cout << "TruckLoad No: " << T_load_no << "\n";
+        std::cout << "\nTruckLoad No: " << T_load_no << "\n";
         current = first;
         for (size_t i = 0; i < T_size; i++)
         {
@@ -108,7 +108,7 @@ void truckload::display_T_load()
         }
         break;
     case 2:
-        std::cout << "TruckLoad No: " << T_load_no << "\n";
+        std::cout << "\nTruckLoad No: " << T_load_no << "\n";
         current = last;
         for (size_t i = 0; i < T_size; i++)
         {
@@ -131,6 +131,7 @@ void truckload::Add_to_load()
     current->create_items();
     current->Prev_BOX(last);
     last = current;
+    ++T_size;
 }
 
 void truckload::remove_from_load()
@@ -141,18 +142,51 @@ void truckload::remove_from_load()
     std::cin.ignore();
     getline(std::cin, t_name);
     current = first;
-    for (size_t i = 0; i < T_size && found == false; i++)
+    for (size_t i = 0; ((i < T_size) && (found == false)); i++)
     {
+        // std::cout << "\nworking\n";
 
         if (t_name == current->get_item_name())
         {
+            // std::cout << "\nworking0\n";
+            --T_size;
+            // std::cout << "\nworking1\n";
             found = true;
+            if (current == first)
+            {
+                first = current->get_nxt_BOX();
+                current->Add_BOX(nullptr);
+                delete current;
+                current = nullptr;
+                break;
+            }
+
+            // std::cout << "\nworking2\n";
             previous->Add_BOX(current->get_nxt_BOX());
+            // std::cout << "\nworking3\n";
             current->Add_BOX(nullptr);
+            // std::cout << "\nworking4\n";
             current->Prev_BOX(nullptr);
+            // std::cout << "\nworking5\n";
             delete current;
-            current = previous->get_nxt_BOX();
-            current->Prev_BOX(previous);
+            if (T_size == 1)
+            {
+                current = nullptr;
+                break;
+            }
+            else if (current == last)
+            {
+                last = previous;
+                current = nullptr;
+                break;
+            }
+            else
+            {
+
+                current = previous->get_nxt_BOX();
+                current->Prev_BOX(previous);
+                break;
+            }
         }
         previous = current;
         current = current->get_nxt_BOX();

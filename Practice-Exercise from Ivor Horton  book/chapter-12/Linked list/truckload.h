@@ -8,14 +8,13 @@ class truckload
 private:
     class BOX;
 
-    size_t T_size;
-
     BOX *first;
     BOX *previous;
     BOX *current;
     BOX *last;
 
 public:
+    size_t T_size;
     size_t T_load_no;
 
     void create_T_load();

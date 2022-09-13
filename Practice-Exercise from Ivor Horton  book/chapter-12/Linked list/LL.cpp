@@ -15,7 +15,7 @@ int main()
         // truckload load1;
         // load1.create_T_load();
         // load1.display_T_load();
-        std::cout << "What task do u wanna perform:\n"
+        std::cout << "\nWhat task do u wanna perform:\n"
                   << "1.Create Load.\n"
                   << "2.Display Load.\n"
                   << "3.Add Items.\n"
@@ -42,7 +42,10 @@ int main()
             break;
 
         default:
-            std::cout << "!!! Wrong Input,Enter a valid choice !!!\n";
+            if (choice != 0)
+            {
+                std::cout << "!!! Wrong Input,Enter a valid choice !!!\n";
+            }
             break;
         }
 
