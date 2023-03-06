@@ -1,5 +1,5 @@
-#ifndef abhay
-#define abhay
+#ifndef TEST_H
+#define TEST_H
 
 #include <iostream>
 
